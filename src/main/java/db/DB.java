@@ -7,9 +7,10 @@ import java.util.Map;
 import model.*;
 
 public class DB {
-    private static final String URL = "jdbc:mysql://localhost:3306/newspaper_delivery?characterEncoding=UTF-8&serverTimezone=UTC";
-    private static final String USER = "root";
-    private static final String PWD = "2720578364....";
+    private static final String URL = System.getenv().getOrDefault("DB_URL",
+        "jdbc:mysql://localhost:3306/newspaper_delivery?characterEncoding=UTF-8&serverTimezone=UTC");
+    private static final String USER = System.getenv().getOrDefault("DB_USER", "root");
+    private static final String PWD = System.getenv().getOrDefault("DB_PASSWORD", "2720578364....");
 
     static {
         try { Class.forName("com.mysql.cj.jdbc.Driver"); }
